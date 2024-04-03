@@ -1,0 +1,127 @@
+{
+  "labymod": {
+    "hudWidgetCategory": {
+      "terramc_staff": {
+        "name": "TerraMC - Team",
+        "description": "Zeigt dir Informationen für TerraMC - Teammitglieder"
+      }
+    }
+  },
+
+  "terramc_staff": {
+    "settings": {
+      "name": "TerraMCnet Team",
+      "header": {
+        "general": {
+          "name": "Allgemeine Funktionen"
+        },
+        "staff": {
+          "name": "§aTeam Funktionen"
+        },
+        "admin": {
+          "name": "§4Admin Funktionen"
+        }
+      },
+      "enabled": {
+        "name": "Aktiviert",
+        "description": "Soll das Addon aktiviert sein"
+      },
+      "cloudNotifyType": {
+        "name": "Cloud-Benachrichtigung",
+        "description": "Lege fest wie die Server start/stop Benachrichtigungen der Cloud angezeigt werden sollen.",
+        "type": {
+          "chat": "§aChat",
+          "notification": "§bLaby-Benachrichtigung",
+          "hide": "§cVerstecken"
+        }
+      },
+      "hideOwnTag": {
+        "name": "Eigenen Team-Nametag verstecken",
+        "description": "Verstecke deinen eigenen Team-Nametag vor anderen Spielern"
+      },
+      "showTagAlways": {
+        "name": "Team-Nametags immer anzeigen",
+        "description": "Zeigt Tags von Teammitgliedern auch wenn diese genickt oder im ToggleRank sind."
+      }
+    },
+
+    "notification": {
+      "error": {
+        "title": "§7§l§o▎§8§l§o▏ §4TerraMC » Team - Fehler",
+        "api": {
+          "stats": "Ein Fehler beim laden deiner Statistiken ist aufgetreten.",
+          "data": "Ein Fehler beim laden der Daten ist aufgetreten.",
+          "general": "Die Daten können aufgrund eines API-Fehlers nicht geladen werden.",
+          "serverStats": "Ein Fehler beim laden der Server-Stats ist aufgetreten.",
+          "reason": "Grund"
+        }
+      },
+      "success": {
+        "title": "§7§l§o▎§8§l§o▏ §2TerraMC » Team"
+      },
+      "settings": {
+        "title": "§7§l§o▎§8§l§o▏ §eTerraMC » Team",
+        "notPermitted": "§cDu kannst diese Einstellung nicht ändern, da du keinen Zugriff hast"
+      },
+      "cloud": {
+        "error": {
+          "title": "§7§l§o▎§8§l§o▏ §4Cloud-Steuerung",
+          "parameter": "Parameter Fehler",
+          "notAuthorized": "User nicht autorisiert",
+          "groupNotFound": "Gruppe existiert nicht",
+          "unknown": "Unbekannter Fehler (%s)"
+        },
+        "success": {
+          "title": "§7§l§o▎§8§l§o▏ §aCloud-Steuerung"
+        }
+      },
+      "other": {
+        "tag-disabled": "%s hat seinen Team-Tag deaktiviert.",
+        "tag-enabled": "%s hat seinen Team-Tag aktiviert."
+      }
+    },
+
+    "hudWidget": {
+      "terramc_restart_time": {
+        "name": "Neustart-Zeit"
+      },
+      "terramc_server_status": {
+        "name": "Server-Status",
+        "tps": "TPS",
+        "cpu": "CPU",
+        "ram": "RAM"
+      },
+      "terramc_vanish": {
+        "name": "Vanish",
+        "adminVanish": "Admin-Vanish",
+        "autoVanish": "Auto. Vanish"
+      },
+      "terramc_current_report": {
+        "name": "Aktueller Report",
+        "reported": "Gemeldeter Spieler",
+        "reporter": "Gemeldet von",
+        "reason": "Report-Grund",
+        "priority": "Priorität",
+        "id": "Report-ID",
+        "finish": "Abschließen?"
+      }
+    },
+
+    "ui": {
+      "navigation": {
+        "main_ui": "TerraMC (Team)"
+      },
+      "general": {
+        "noInfoAvailable": "Es können keine Informationen bereitgestellt werden.",
+        "connectToServer": "Bitte verbinde dich auf TerraMC.net",
+        "noAccess": "Du bist nicht berechtigt um diese Seite zu sehen.",
+        "connect": "Verbinden"
+      },
+      "activity": {
+        "serverInfo": "Server-Info",
+        "settings": "Einstellungen",
+        "cloud": "Cloud"
+      }
+    }
+  }
+}
