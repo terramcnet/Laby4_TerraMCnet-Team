@@ -81,6 +81,60 @@
       }
     },
 
+    "interaction": {
+      "ban": "Spieler bannen",
+      "mute": "Spieler muten"
+    },
+
+    "popup": {
+      "ban": {
+        "title": "Spieler bannen - %s",
+        "reason": {
+          "title": "Grund des Banns",
+          "type": {
+            "hacking": "Hacking",
+            "umgehung": "Ban-Umgehung",
+            "abuse": "Report-Ausnutzung",
+            "bugusing": "Bugusing",
+            "teaming": "Teaming",
+            "ghosting": "Ghosting",
+            "trapping": "Spawn-Trapping",
+            "skin": "Skin/Name"
+          }
+        },
+        "proof": "Beweis"
+      },
+      "mute": {
+        "title": "Spieler muten - %s",
+        "reason": {
+          "title": "Grund des Mutes",
+          "type": {
+            "wortwahl": "Wortwahl",
+            "werbung": "Werbung",
+            "verhalten": "Verhalten",
+            "spamming": "Spamming",
+            "provokation": "Provokation",
+            "capslock": "Capslock",
+            "other": "Sonstiges"
+          }
+        },
+        "proof": "Beweis"
+      },
+      "success": {
+        "title": "Aktion erfolgreich durchgeführt",
+        "ban": "Der Spieler %s wurde erfolgreich gebannt.",
+        "mute": "Der Spieler %s wurde erfolgreich gemutet."
+      },
+      "failed": {
+        "title": "Aktion nicht durchgeführt",
+        "empty": "Das Feld %s darf nicht leer sein."
+      },
+      "button": {
+        "send": "Absenden",
+        "abort": "Abbrechen"
+      }
+    },
+
     "hudWidget": {
       "terramc_restart_time": {
         "name": "Neustart-Zeit"

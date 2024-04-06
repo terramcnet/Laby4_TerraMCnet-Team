@@ -20,6 +20,8 @@ import net.terramc.staff.hudwidget.CurrentReportHudWidget;
 import net.terramc.staff.hudwidget.RestartTimeHudWidget;
 import net.terramc.staff.hudwidget.ServerStatusHudWidget;
 import net.terramc.staff.hudwidget.VanishHudWidget;
+import net.terramc.staff.interaction.BanBulletPoint;
+import net.terramc.staff.interaction.MuteBulletPoint;
 import net.terramc.staff.listener.ChatMessageListener;
 import net.terramc.staff.listener.NetworkListener;
 import net.terramc.staff.listener.NetworkPayloadListener;
@@ -79,6 +81,9 @@ public class TerraStaffAddon extends LabyAddon<TerraStaffConfiguration> {
     labyAPI().hudWidgetRegistry().register(new ServerStatusHudWidget(this));
     labyAPI().hudWidgetRegistry().register(new VanishHudWidget(this));
     labyAPI().hudWidgetRegistry().register(new CurrentReportHudWidget(this));
+
+    labyAPI().interactionMenuRegistry().register("terramc_staff_ban", new BanBulletPoint(this));
+    labyAPI().interactionMenuRegistry().register("terramc_staff_mute", new MuteBulletPoint(this));
 
     this.logger().info("[TerraMCnet Team] Addon enabled.");
 
