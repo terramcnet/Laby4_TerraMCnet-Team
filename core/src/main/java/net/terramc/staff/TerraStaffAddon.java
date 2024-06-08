@@ -1,6 +1,7 @@
 package net.terramc.staff;
 
 import java.util.UUID;
+import java.util.concurrent.TimeUnit;
 import com.google.gson.Gson;
 import net.labymod.api.Laby;
 import net.labymod.api.addon.LabyAddon;
@@ -13,9 +14,10 @@ import net.labymod.api.notification.Notification;
 import net.labymod.api.notification.Notification.Type;
 import net.labymod.api.revision.SimpleRevision;
 import net.labymod.api.util.GsonUtil;
+import net.labymod.api.util.concurrent.task.Task;
 import net.labymod.api.util.version.SemanticVersion;
 import net.terramc.staff.activities.navigation.TerraMainActivity;
-import net.terramc.staff.activities.navigation.TerraNavigationElement;
+import net.terramc.staff.activities.navigation.TerraStaffNavigation;
 import net.terramc.staff.hudwidget.CurrentReportHudWidget;
 import net.terramc.staff.hudwidget.RestartTimeHudWidget;
 import net.terramc.staff.hudwidget.ServerStatusHudWidget;
@@ -71,10 +73,9 @@ public class TerraStaffAddon extends LabyAddon<TerraStaffConfiguration> {
     this.registerListener(new ChatMessageListener(this));
     this.registerListener(new NetworkListener(this));
     this.registerListener(new SessionListener(this));
-
     this.registerListener(new NetworkPayloadListener(this));
 
-    labyAPI().navigationService().register("terramc_staff_ui", new TerraNavigationElement(this));
+    //labyAPI().navigationService().register("terramc_staff_ui", new TerraNavigationElement(this));
 
     labyAPI().hudWidgetRegistry().categoryRegistry().register(widgetCategory);
     labyAPI().hudWidgetRegistry().register(new RestartTimeHudWidget(this));
@@ -86,6 +87,7 @@ public class TerraStaffAddon extends LabyAddon<TerraStaffConfiguration> {
     labyAPI().interactionMenuRegistry().register("terramc_staff_mute", new MuteBulletPoint(this));
 
     this.logger().info("[TerraMCnet Team] Addon enabled.");
+    Task.builder(() -> TerraStaffNavigation.register(this)).delay(10, TimeUnit.SECONDS).build().execute();
 
     configuration().cloudNotifyType().addChangeListener(cloudNotifyType -> {
       if(!rankUtil.canControlCloud()) {

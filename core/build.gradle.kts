@@ -18,6 +18,8 @@ tasks.withType<Javadoc>{
 
 dependencies {
     api(project(":api"))
+
+    addon("terramc", false, "net.terramc:addon:1.4.3")
 }
 
 labyModProcessor {
