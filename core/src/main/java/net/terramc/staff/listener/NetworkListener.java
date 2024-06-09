@@ -42,6 +42,7 @@ public class NetworkListener {
   public void onNetworkDisconnect(ServerDisconnectEvent event) {
     this.addon.setConnected(false);
     AddonData.reports().clear();
+    AddonData.setCurrentReport(null);
   }
 
 }
