@@ -110,6 +110,44 @@ public class NetworkPayloadListener {
             } catch (NumberFormatException ignored) {}
           }
 
+          if(object.has("reportAddonAccepted")) {
+
+            String[] split = object.get("reportAddonAccepted").getAsString().split(";");
+            if(split.length != 2) return;
+            try {
+              int id = Integer.parseInt(split[0]);
+              String playerName = split[1];
+              AddonData.reports().forEach(reportData -> {
+                if(reportData.id() == id) {
+                  if(!reportData.accepted()) {
+                    reportData.accepted(true);
+
+                    this.addon.pushNotification(
+                        Component.text(TerraStaffAddon.doubleLine + "§4Report-System"),
+                        Component.text("§7Der Report mit der ID §e#" + id + " §8(§c" + reportData.reported() + "§8) §7wird nun von §a" + playerName + " §7bearbeitet.")
+                    );
+
+                  }
+                }
+              });
+            } catch (NumberFormatException ignored) {}
+
+            /*int id = object.get("reportAddonAccepted").getAsInt();
+            AddonData.reports().forEach(reportData -> {
+              if(reportData.id() == id) {
+                if(!reportData.accepted()) {
+                  reportData.accepted(true);
+
+                  this.addon.pushNotification(
+                      Component.text(TerraStaffAddon.doubleLine + "§4Report-System"),
+                      Component.text("§7Der Report mit der ID §e#" + id + " §8(§c" + reportData.reported() + "§8) §7wird nun von einem Teammitglied bearbeitet.")
+                  );
+
+                }
+              }
+            });*/
+          }
+
           if(object.has("currentReportData")) {
             String message = object.get("currentReportData").getAsString();
             ReportData data = ReportData.fromString(message);

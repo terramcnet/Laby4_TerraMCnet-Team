@@ -1,0 +1,120 @@
+.container {
+  top: 0;
+  bottom: 20;
+  left: 5;
+  right: 5;
+  filter: blur(25);
+  border-radius: 15;
+  border-thickness: 5;
+  border-color: var(--background-color-border);
+  background-color: var(--background-color);
+  box-shadow: none;
+
+  .header {
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 25;
+    border-radius: 15 15 0 0;
+    background-color: rgba(255, 85, 85, 0.3);
+
+    .header-text {
+      alignment-x: center;
+      alignment-y: center;
+    }
+
+  }
+
+
+}
+
+.reports-grid {
+  top: 30;
+  left: 5;
+  width: 100%;
+  padding-right: 10;
+  height: fit-content;
+  space-between-entries: 10;
+  tiles-per-line: 4;
+  tile-height: 85;
+
+  Report {
+    border-radius: 5;
+    border-thickness: 2;
+    border-color: rgba(255, 85, 85, 0.3);
+
+    .id {
+      top: 5;
+      alignment-x: center;
+      font-size: 0.7;
+    }
+
+    .reported-head {
+      //alignment-x: center;
+      top: 5;
+      left: 10;
+      height: 32;
+      width: 32;
+    }
+
+    .reporter-head {
+      top: 5;
+      right: 10;
+      height: 32;
+      width: 32;
+    }
+
+    .reporter {
+      top: 50;
+      left: 5;
+      font-size: 0.8;
+    }
+
+    .reported {
+      top: 40;
+      left: 5;
+      font-size: 0.8;
+    }
+
+    .reason {
+      top: 60;
+      left: 5;
+      font-size: 0.8;
+    }
+
+    .priority {
+      top: 70;
+      left: 5;
+      font-size: 0.8;
+    }
+
+    .delete-button {
+      width: fit-content;
+      padding: 0 2 0 2;
+      height: 10;
+      right: 5;
+      bottom: 15;
+    }
+
+    .accept-button {
+      width: fit-content;
+      height: 10;
+      padding: 0 2 0 2;
+      bottom: 5;
+      right: 5;
+    }
+
+    .accepted-text {
+      font-size: 0.6;
+      bottom: 5;
+      right: 5;
+      text-color: red;
+    }
+
+  }
+
+  .accepted {
+    border-color: rgba(0, 170, 0, 0.3);
+  }
+
+}

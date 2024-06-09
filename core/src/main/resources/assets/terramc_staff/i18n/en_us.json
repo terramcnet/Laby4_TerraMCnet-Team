@@ -119,7 +119,7 @@
       },
       "activity": {
         "serverInfo": "Server-Info",
-        "staff": "Team",
+        "reports": "Reports",
         "cloud": "Cloud"
       }
     }

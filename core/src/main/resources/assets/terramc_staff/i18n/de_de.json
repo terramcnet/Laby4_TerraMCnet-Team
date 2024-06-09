@@ -173,8 +173,27 @@
       },
       "activity": {
         "serverInfo": "Server-Info",
-        "settings": "Einstellungen",
+        "reports": "Reports",
         "cloud": "Cloud"
+      },
+      "cloud": {
+        "title": "Cloud-Steuerung",
+        "button": {
+          "restart": "Neustart",
+          "maintenance": "Wartung"
+        }
+      },
+      "reports": {
+        "title": "Aktuelle Reports",
+        "reported": "Gemeldeter Spieler",
+        "reporter": "Gemeldet von",
+        "reason": "Grund",
+        "priority": "Priorität",
+        "button": {
+          "accept": "Annehmen",
+          "delete": "Löschen"
+        },
+        "accepted": "Report wurde bereits angenommen"
       }
     }
   }
