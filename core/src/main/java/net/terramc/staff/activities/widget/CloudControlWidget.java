@@ -1,5 +1,7 @@
 package net.terramc.staff.activities.widget;
 
+import net.labymod.api.client.component.Component;
+import net.labymod.api.client.component.format.NamedTextColor;
 import net.labymod.api.client.gui.screen.Parent;
 import net.labymod.api.client.gui.screen.widget.SimpleWidget;
 import net.labymod.api.client.gui.screen.widget.widgets.ComponentWidget;
@@ -9,9 +11,6 @@ import net.terramc.staff.TerraStaffAddon;
 import java.util.UUID;
 
 public class CloudControlWidget extends SimpleWidget {
-
-  private String restartText = "§cNEUSTART";
-  private String maintenanceText = "§4WARTUNG";
 
   private TerraStaffAddon addon;
   private UUID uuid;
@@ -32,24 +31,22 @@ public class CloudControlWidget extends SimpleWidget {
     super.initialize(parent);
 
     DivWidget container = new DivWidget();
-    container.addId("container");
+    container.addId("control-container");
 
     ComponentWidget title = ComponentWidget.text(this.groupDisplay);
     title.addId("title");
 
     container.addChild(title);
 
-    ButtonWidget restartButton = ButtonWidget.text(this.restartText);
+    ButtonWidget restartButton = ButtonWidget.component(Component.translatable("terramc_staff.ui.cloud.button.restart", NamedTextColor.RED));
     restartButton.addId("restartBtn");
     restartButton.setActionListener(() -> this.addon.apiUtil().sendCloudControl(this.uuid, "restart", this.groupName));
-    //addChild(restartButton);
     container.addChild(restartButton);
 
     if(this.maintenance) {
-      ButtonWidget maintenanceButton = ButtonWidget.text(this.maintenanceText);
+      ButtonWidget maintenanceButton = ButtonWidget.component(Component.translatable("terramc_staff.ui.cloud.button.maintenance", NamedTextColor.GOLD));
       maintenanceButton.addId("maintenanceBtn");
       maintenanceButton.setActionListener(() -> this.addon.apiUtil().sendCloudControl(this.uuid, "maintenance", this.groupName));
-      //addChild(maintenanceButton);
       container.addChild(maintenanceButton);
     }
 

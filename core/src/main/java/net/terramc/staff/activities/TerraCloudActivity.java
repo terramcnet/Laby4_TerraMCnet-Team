@@ -1,12 +1,15 @@
 package net.terramc.staff.activities;
 
 import net.labymod.api.Laby;
+import net.labymod.api.client.component.Component;
 import net.labymod.api.client.gui.mouse.MutableMouse;
 import net.labymod.api.client.gui.screen.Parent;
 import net.labymod.api.client.gui.screen.activity.Activity;
 import net.labymod.api.client.gui.screen.activity.AutoActivity;
 import net.labymod.api.client.gui.screen.activity.Link;
 import net.labymod.api.client.gui.screen.widget.action.ListSession;
+import net.labymod.api.client.gui.screen.widget.widgets.ComponentWidget;
+import net.labymod.api.client.gui.screen.widget.widgets.DivWidget;
 import net.labymod.api.client.gui.screen.widget.widgets.layout.ScrollWidget;
 import net.labymod.api.client.gui.screen.widget.widgets.layout.TilesGridWidget;
 import net.labymod.api.client.render.matrix.Stack;
@@ -33,6 +36,13 @@ public class TerraCloudActivity extends Activity {
     if(!this.addon.rankUtil().canControlCloud()) return;
 
     UUID uuid = Laby.references().gameUserService().clientGameUser().getUniqueId();
+
+    DivWidget container = new DivWidget().addId("container");
+
+    DivWidget header = new DivWidget().addId("header");
+    Component headerTextComponent = Component.translatable("terramc_staff.ui.cloud.title");
+    header.addChild(ComponentWidget.component(headerTextComponent).addId("header-text"));
+    container.addChild(header);
 
     TilesGridWidget<CloudControlWidget> gridWidget = new TilesGridWidget<>();
     gridWidget.addId("grid-control");
@@ -91,7 +101,8 @@ public class TerraCloudActivity extends Activity {
 
     ScrollWidget scrollWidget = new ScrollWidget(gridWidget, new ListSession<>());
 
-    this.document.addChild(scrollWidget);
+    container.addChild(scrollWidget);
+    this.document.addChild(container);
   }
 
   @Override
