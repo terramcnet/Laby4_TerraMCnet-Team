@@ -9,6 +9,7 @@ import net.labymod.api.event.client.network.server.ServerDisconnectEvent;
 import net.labymod.api.event.client.network.server.ServerLoginEvent;
 import net.labymod.api.util.concurrent.task.Task;
 import net.terramc.staff.TerraStaffAddon;
+import net.terramc.staff.data.AddonData;
 
 public class NetworkListener {
 
@@ -40,6 +41,7 @@ public class NetworkListener {
   @Subscribe
   public void onNetworkDisconnect(ServerDisconnectEvent event) {
     this.addon.setConnected(false);
+    AddonData.reports().clear();
   }
 
 }
