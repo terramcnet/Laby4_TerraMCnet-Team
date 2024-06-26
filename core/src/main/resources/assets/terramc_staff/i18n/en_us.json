@@ -8,7 +8,7 @@
     }
   },
 
-  "terramc": {
+  "terramc_staff": {
     "settings": {
       "name": "TerraMCnet Team",
       "header": {
@@ -25,12 +25,29 @@
       "enabled": {
         "name": "Aktiviert",
         "description": "Soll das Addon aktiviert sein"
+      },
+      "cloudNotifyType": {
+        "name": "Cloud-Benachrichtigung",
+        "description": "Lege fest wie die Server start/stop Benachrichtigungen der Cloud angezeigt werden sollen.",
+        "type": {
+          "chat": "§aChat",
+          "notification": "§bLaby-Benachrichtigung",
+          "hide": "§cVerstecken"
+        }
+      },
+      "hideOwnTag": {
+        "name": "Eigenen Team-Nametag verstecken",
+        "description": "Verstecke deinen eigenen Team-Nametag vor anderen Spielern"
+      },
+      "showTagAlways": {
+        "name": "Team-Nametags immer anzeigen",
+        "description": "Zeigt Tags von Teammitgliedern auch wenn diese genickt oder im ToggleRank sind."
       }
     },
 
     "notification": {
       "error": {
-        "title": "§7§l§o▎§8§l§o▏ §4TerraMC - Fehler",
+        "title": "§7§l§o▎§8§l§o▏ §4TerraMC » Team - Fehler",
         "api": {
           "stats": "Ein Fehler beim laden deiner Statistiken ist aufgetreten.",
           "data": "Ein Fehler beim laden der Daten ist aufgetreten.",
@@ -40,7 +57,11 @@
         }
       },
       "success": {
-        "title": "§7§l§o▎§8§l§o▏ §2TerraMC"
+        "title": "§7§l§o▎§8§l§o▏ §2TerraMC » Team"
+      },
+      "settings": {
+        "title": "§7§l§o▎§8§l§o▏ §eTerraMC » Team",
+        "notPermitted": "§cDu kannst diese Einstellung nicht ändern, da du keinen Zugriff hast"
       },
       "cloud": {
         "error": {
@@ -60,33 +81,89 @@
       }
     },
 
+    "interaction": {
+      "ban": "Spieler bannen",
+      "mute": "Spieler muten"
+    },
+
+    "popup": {
+      "ban": {
+        "title": "Spieler bannen - %s",
+        "reason": {
+          "title": "Grund des Banns",
+          "type": {
+            "hacking": "Hacking",
+            "umgehung": "Ban-Umgehung",
+            "abuse": "Report-Ausnutzung",
+            "bugusing": "Bugusing",
+            "teaming": "Teaming",
+            "ghosting": "Ghosting",
+            "trapping": "Spawn-Trapping",
+            "skin": "Skin/Name"
+          }
+        },
+        "proof": "Beweis"
+      },
+      "mute": {
+        "title": "Spieler muten - %s",
+        "reason": {
+          "title": "Grund des Mutes",
+          "type": {
+            "wortwahl": "Wortwahl",
+            "werbung": "Werbung",
+            "verhalten": "Verhalten",
+            "spamming": "Spamming",
+            "provokation": "Provokation",
+            "capslock": "Capslock",
+            "other": "Sonstiges"
+          }
+        },
+        "proof": "Beweis"
+      },
+      "success": {
+        "title": "Aktion erfolgreich durchgeführt",
+        "ban": "Der Spieler %s wurde erfolgreich gebannt.",
+        "mute": "Der Spieler %s wurde erfolgreich gemutet."
+      },
+      "failed": {
+        "title": "Aktion nicht durchgeführt",
+        "empty": "Das Feld %s darf nicht leer sein."
+      },
+      "button": {
+        "send": "Absenden",
+        "abort": "Abbrechen"
+      }
+    },
+
     "hudWidget": {
-      "nickname": {
-        "name": "NickName"
+      "terramc_restart_time": {
+        "name": "Neustart-Zeit"
       },
-      "coins": {
-        "name": "GCoins"
+      "terramc_server_status": {
+        "name": "Server-Status",
+        "tps": "TPS",
+        "cpu": "CPU",
+        "ram": "RAM"
       },
-      "points": {
-        "name": "GPoints"
+      "terramc_vanish": {
+        "name": "Vanish",
+        "adminVanish": "Admin-Vanish",
+        "autoVanish": "Auto. Vanish"
       },
-      "gameRank": {
-        "name": "Ranking"
-      },
-      "pointsRank": {
-        "name": "Punkte-Rang"
-      },
-      "ironTimer": {
-        "name": "Eisen-Timer"
-      },
-      "goldTimer": {
-        "name": "Gold-Timer"
+      "terramc_current_report": {
+        "name": "Aktueller Report",
+        "reported": "Gemeldeter Spieler",
+        "reporter": "Gemeldet von",
+        "reason": "Report-Grund",
+        "priority": "Priorität",
+        "id": "Report-ID",
+        "finish": "Abschließen?"
       }
     },
 
     "ui": {
       "navigation": {
-        "main_ui": "TerraMC"
+        "main_ui": "TerraMC (Team)"
       },
       "general": {
         "noInfoAvailable": "Es können keine Informationen bereitgestellt werden.",
@@ -94,33 +171,29 @@
         "noAccess": "Du bist nicht berechtigt um diese Seite zu sehen.",
         "connect": "Verbinden"
       },
-      "staff": {
-        "cloudNotify": {
-          "title": "Cloud-Benachrichtigung",
-          "description": "Lege fest wie die Server start/stop Benachrichtigungen der Cloud angezeigt werden sollen.",
-          "chat": "Chat",
-          "notification": "Laby-Benachrichtigung",
-          "hide": "Verstecken"
-        },
-        "showTagAlways": {
-          "title": "Team-Nametags immer anzeigen",
-          "description": "Zeigt Tags von Teammitgliedern auch wenn diese genickt oder im ToggleRank sind."
-        },
-        "hideTag": {
-          "title": "Eigenen Team-Nametag verstecken",
-          "description": "Verstecke deinen eigenen Team-Nametag vor anderen Spielern"
-        },
-        "settings": {
-          "title": "§eEinstellungen",
-          "change": "%s wurde zu %s geändert.",
-          "enabled": "§aAktiviert",
-          "disabled": "§cDeaktiviert"
-        }
-      },
       "activity": {
         "serverInfo": "Server-Info",
         "reports": "Reports",
         "cloud": "Cloud"
+      },
+      "cloud": {
+        "title": "Cloud-Steuerung",
+        "button": {
+          "restart": "Neustart",
+          "maintenance": "Wartung"
+        }
+      },
+      "reports": {
+        "title": "Aktuelle Reports",
+        "reported": "Gemeldeter Spieler",
+        "reporter": "Gemeldet von",
+        "reason": "Grund",
+        "priority": "Priorität",
+        "button": {
+          "accept": "Annehmen",
+          "delete": "Löschen"
+        },
+        "accepted": "Report wurde bereits angenommen"
       }
     }
   }
