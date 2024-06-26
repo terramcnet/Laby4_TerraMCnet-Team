@@ -14,7 +14,7 @@ import net.terramc.staff.data.ServerData;
 import net.terramc.staff.util.Util;
 
 @AutoActivity
-@Link("activity.lss")
+@Link("server-overview.lss")
 public class TerraServerActivity extends Activity {
 
   private TerraStaffAddon addon;
