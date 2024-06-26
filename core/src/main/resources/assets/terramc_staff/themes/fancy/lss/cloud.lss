@@ -2,6 +2,23 @@ Button {
   width: 70;
 }
 
+.not-connected-info {
+  alignment-x: center;
+  top: 40vh;
+  text-color: dark_red;
+}
+
+.connect-text {
+  alignment-x: center;
+  top: 45vh;
+  text-color: red;
+}
+
+.connect-btn {
+  alignment-x: center;
+  top: 50vh;
+}
+
 .container {
   top: 0;
   bottom: 20;

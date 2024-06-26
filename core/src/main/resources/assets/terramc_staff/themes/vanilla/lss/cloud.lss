@@ -2,17 +2,58 @@ Button {
   width: 70;
 }
 
+.not-connected-info {
+  alignment-x: center;
+  top: 40vh;
+  text-color: dark_red;
+}
+
+.connect-text {
+  alignment-x: center;
+  top: 45vh;
+  text-color: red;
+}
+
+.connect-btn {
+  alignment-x: center;
+  top: 50vh;
+}
+
+.container {
+  top: 0;
+  bottom: 25;
+  left: 5;
+  right: 5;
+  box-shadow: classic left top right bottom;
+  renderer: "DirtBackground";
+
+  .header {
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 25;
+      background-color: rgba(85, 255, 85, 0.2);
+
+      .header-text {
+        alignment-x: center;
+        alignment-y: center;
+      }
+
+    }
+
+}
+
 Scroll {
-   top: 5;
+   top: 30;
+   bottom: 10;
    width: 100%;
-   height: 90%;
 
    .grid-control {
       top: 0;
       left: 0;
       height: fit-content;
       width: 100%;
-      tiles-per-line: 5;
+      tiles-per-line: 6;
       tile-height: 70;
    }
 
@@ -21,13 +62,12 @@ Scroll {
       top: 0;
       width: 5;
       height: 100%;
-      margin-right: 5;
    }
 }
 
 CloudControl {
 
-  .container {
+  .control-container {
     alignment-x: center;
     top: 0;
     width: 80;
@@ -45,7 +85,7 @@ CloudControl {
   }
 
   .maintenanceBtn {
-    top: 35;
+    top: 40;
     alignment-x: center;
   }
 

@@ -2,6 +2,7 @@ package net.terramc.staff.activities;
 
 import net.labymod.api.Laby;
 import net.labymod.api.client.component.Component;
+import net.labymod.api.client.gui.icon.Icon;
 import net.labymod.api.client.gui.mouse.MutableMouse;
 import net.labymod.api.client.gui.screen.Parent;
 import net.labymod.api.client.gui.screen.activity.Activity;
@@ -10,9 +11,12 @@ import net.labymod.api.client.gui.screen.activity.Link;
 import net.labymod.api.client.gui.screen.widget.action.ListSession;
 import net.labymod.api.client.gui.screen.widget.widgets.ComponentWidget;
 import net.labymod.api.client.gui.screen.widget.widgets.DivWidget;
+import net.labymod.api.client.gui.screen.widget.widgets.input.ButtonWidget;
 import net.labymod.api.client.gui.screen.widget.widgets.layout.ScrollWidget;
 import net.labymod.api.client.gui.screen.widget.widgets.layout.TilesGridWidget;
 import net.labymod.api.client.render.matrix.Stack;
+import net.labymod.api.client.resources.ResourceLocation;
+import net.labymod.api.util.I18n;
 import net.terramc.staff.TerraStaffAddon;
 import net.terramc.staff.activities.widget.CloudControlWidget;
 import net.terramc.staff.util.Util;
@@ -32,8 +36,30 @@ public class TerraCloudActivity extends Activity {
   public void initialize(Parent parent) {
     super.initialize(parent);
 
-    if(!this.addon.isConnected()) return;
-    if(!this.addon.rankUtil().canControlCloud()) return;
+    if(!this.addon.isConnected()) {
+      ComponentWidget noInfoWidget = ComponentWidget.i18n("terramc.ui.general.noInfoAvailable");
+      noInfoWidget.addId("not-connected-info");
+      this.document.addChild(noInfoWidget);
+
+      ComponentWidget connectTextWidget = ComponentWidget.i18n("terramc.ui.general.connectToServer");
+      connectTextWidget.addId("connect-text");
+      this.document.addChild(connectTextWidget);
+
+      ButtonWidget connect = ButtonWidget.text(I18n.translate("terramc.ui.general.connect"),
+          Icon.texture(ResourceLocation.create("terramc", "textures/ui/update.png")));
+      connect.setActionListener(() -> this.labyAPI.serverController().joinServer("terramc.net"));
+      connect.addId("connect-btn");
+
+      this.document.addChild(connect);
+      return;
+    }
+
+    if(!this.addon.rankUtil().canControlCloud()) {
+      ComponentWidget noAccessWidget = ComponentWidget.i18n("terramc_staff.ui.general.noAccess");
+      noAccessWidget.addId("no-access");
+      this.document.addChild(noAccessWidget);
+      return;
+    }
 
     UUID uuid = Laby.references().gameUserService().clientGameUser().getUniqueId();
 
