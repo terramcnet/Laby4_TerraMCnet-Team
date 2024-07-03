@@ -42,7 +42,7 @@ public class NetworkPayloadListener {
 
           if(object.has("playerRank")) {
             AddonData.setRank(object.get("playerRank").getAsString());
-            this.addon.terraMainActivity.updateStaffActivity();
+            //this.addon.terraMainActivity.updateStaffActivity();
           }
 
           // Staff
