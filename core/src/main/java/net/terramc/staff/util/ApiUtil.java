@@ -104,7 +104,7 @@ public class ApiUtil {
             AddonData.setRank(global.get("Rank").getAsString());
           }
 
-          Laby.labyAPI().minecraft().executeOnRenderThread(() -> addon.terraMainActivity.updateStaffActivity());
+          //Laby.labyAPI().minecraft().executeOnRenderThread(() -> addon.terraMainActivity.updateStaffActivity());
         });
   }
 
