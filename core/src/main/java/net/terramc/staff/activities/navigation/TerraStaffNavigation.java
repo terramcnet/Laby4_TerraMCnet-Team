@@ -7,16 +7,13 @@ import net.terramc.addon.TerraAddon;
 import net.terramc.addon.activities.navigation.TerraMainActivity;
 import net.terramc.staff.TerraStaffAddon;
 import net.terramc.staff.activities.TerraCloudActivity;
+import net.terramc.staff.activities.TerraReportsActivity;
 import net.terramc.staff.activities.TerraServerActivity;
 
 public class TerraStaffNavigation {
 
   public static void register(TerraStaffAddon staffAddon) {
     staffAddon.logger().info("Try invoke navigation into TerraMCnet addon");
-    if(Laby.labyAPI().addonService().getAddon("terramc").isEmpty()) {
-      staffAddon.logger().info("Can't invoke navigation. Reason: TerraMCnet Addon is not installed.");
-      return;
-    }
     if(TerraAddon.instance() == null) {
       staffAddon.logger().info("Can't invoke navigation. Reason: TerraMCnet Addon instance is null.");
       return;
@@ -29,29 +26,39 @@ public class TerraStaffNavigation {
     }
 
     String serverInfoId = "terra_server";
+    String reportsId = "terra_staff_reports";
     String cloudId = "terra_cloud";
 
-    //if(addon.rankUtil().isAdmin()) {
-      if(activity.getElementById(serverInfoId) == null) {
-        activity.register(serverInfoId, new DefaultComponentTab(Component.translatable("terramc_staff.ui.activity.serverInfo"), new TerraServerActivity(staffAddon)));
-        staffAddon.logger().info("Invoke ServerActivity into TerraMCnet Addon");
+    Laby.labyAPI().minecraft().executeOnRenderThread(() -> {
+      if(addon.rankUtil().isAdmin()) {
+        if(activity.getElementById(serverInfoId) == null) {
+            activity.register(serverInfoId, new DefaultComponentTab(Component.translatable("terramc_staff.ui.activity.serverInfo"), new TerraServerActivity(staffAddon)));
+            staffAddon.logger().info("Invoke ServerActivity into TerraMCnet Addon");
+        }
+      } else {
+        activity.unregister(serverInfoId);
       }
-    //} else {
-      //addon.terraMainActivity.unregister(serverInfoId);
-    //}
 
-    //if(addon.rankUtil().canControlCloud()) {
-      if(activity.getElementById(cloudId) == null) {
-        activity.register(cloudId, new DefaultComponentTab(Component.translatable("terramc_staff.ui.activity.cloud"), new TerraCloudActivity(staffAddon)));
-        staffAddon.logger().info("Invoke CloudActivity into TerraMCnet Addon");
+      if(addon.rankUtil().isStaff()) {
+        if(activity.getElementById(reportsId) == null) {
+          activity.register(reportsId, new DefaultComponentTab(Component.translatable("terramc_staff.ui.activity.reports"), new TerraReportsActivity(staffAddon)));
+        }
+      } else {
+        activity.unregister(reportsId);
       }
-    //} else {
-      //addon.terraMainActivity.unregister(cloudId);
-    //}
 
-    Laby.labyAPI().minecraft().executeOnRenderThread(activity::reload);
-    staffAddon.logger().info("Invoked navigation into TerraMCnet addon");
+      if(addon.rankUtil().canControlCloud()) {
+        if(activity.getElementById(cloudId) == null) {
+          activity.register(cloudId, new DefaultComponentTab(Component.translatable("terramc_staff.ui.activity.cloud"), new TerraCloudActivity(staffAddon)));
+          staffAddon.logger().info("Invoke CloudActivity into TerraMCnet Addon");
+        }
+      } else {
+        activity.unregister(cloudId);
+      }
 
+        activity.reload();
+      });
+      staffAddon.logger().info("Invoked navigation into TerraMCnet addon");
   }
 
 }
