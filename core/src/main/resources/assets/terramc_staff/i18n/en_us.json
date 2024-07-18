@@ -2,99 +2,95 @@
   "labymod": {
     "hudWidgetCategory": {
       "terramc_staff": {
-        "name": "TerraMC - Team",
-        "description": "Zeigt dir Informationen für TerraMC - Teammitglieder"
+        "name": "TerraMC - Staff",
+        "description": "Shows you information for TerraMC - Staff"
       }
     }
   },
-
   "terramc_staff": {
     "settings": {
-      "name": "TerraMCnet Team",
+      "name": "TerraMC - Staff",
       "header": {
         "general": {
-          "name": "Allgemeine Funktionen"
+          "name": "General Functions"
         },
         "staff": {
-          "name": "§aTeam Funktionen"
+          "name": "§aStaff Functions"
         },
         "admin": {
-          "name": "§4Admin Funktionen"
+          "name": "§4Admin Functions"
         }
       },
       "enabled": {
-        "name": "Aktiviert",
-        "description": "Soll das Addon aktiviert sein"
+        "name": "Enabled",
+        "description": "Should the Addon be enabled"
       },
       "cloudNotifyType": {
-        "name": "Cloud-Benachrichtigung",
-        "description": "Lege fest wie die Server start/stop Benachrichtigungen der Cloud angezeigt werden sollen.",
+        "name": "Cloud-Notifications",
+        "description": "Specify how the cloud server start/stop notifications should be displayed.",
         "type": {
           "chat": "§aChat",
-          "notification": "§bLaby-Benachrichtigung",
-          "hide": "§cVerstecken"
+          "notification": "§bLaby-Notifications",
+          "hide": "§cHide"
         }
       },
       "hideOwnTag": {
-        "name": "Eigenen Team-Nametag verstecken",
-        "description": "Verstecke deinen eigenen Team-Nametag vor anderen Spielern"
+        "name": "Hide own Staff-Nametag",
+        "description": "Hide your own Staff-Nametag to other players"
       },
       "showTagAlways": {
-        "name": "Team-Nametags immer anzeigen",
-        "description": "Zeigt Tags von Teammitgliedern auch wenn diese genickt oder im ToggleRank sind."
+        "name": "Show Staff-Nametags always",
+        "description": "Show Tags of team members even if they are nodded or in ToggleRank."
       }
     },
-
     "notification": {
       "error": {
-        "title": "§7§l§o▎§8§l§o▏ §4TerraMC » Team - Fehler",
+        "title": "§7§l§o▎§8§l§o▏ §4TerraMC » Team - Error",
         "api": {
-          "stats": "Ein Fehler beim laden deiner Statistiken ist aufgetreten.",
-          "data": "Ein Fehler beim laden der Daten ist aufgetreten.",
-          "general": "Die Daten können aufgrund eines API-Fehlers nicht geladen werden.",
-          "serverStats": "Ein Fehler beim laden der Server-Stats ist aufgetreten.",
-          "reason": "Grund"
+          "stats": "An error occurred while loading your stats.",
+          "data": "An error occurred while loading your data.",
+          "general": "The data could not be loaded due to an API error.",
+          "serverStats": "An error occurred while loading the Server-Stats.",
+          "reason": "Reason"
         }
       },
       "success": {
-        "title": "§7§l§o▎§8§l§o▏ §2TerraMC » Team"
+        "title": "§7§l§o▎§8§l§o▏ §2TerraMC » Staff"
       },
       "settings": {
-        "title": "§7§l§o▎§8§l§o▏ §eTerraMC » Team",
-        "notPermitted": "§cDu kannst diese Einstellung nicht ändern, da du keinen Zugriff hast"
+        "title": "§7§l§o▎§8§l§o▏ §eTerraMC » Staff",
+        "notPermitted": "§cYou cannot change this setting because you do not have access"
       },
       "cloud": {
         "error": {
-          "title": "§7§l§o▎§8§l§o▏ §4Cloud-Steuerung",
-          "parameter": "Parameter Fehler",
-          "notAuthorized": "User nicht autorisiert",
-          "groupNotFound": "Gruppe existiert nicht",
-          "unknown": "Unbekannter Fehler (%s)"
+          "title": "§7§l§o▎§8§l§o▏ §4Cloud-Control",
+          "parameter": "Parameter error",
+          "notAuthorized": "User not authorized",
+          "groupNotFound": "Group does not exist",
+          "unknown": "Unknown error (%s)"
         },
         "success": {
-          "title": "§7§l§o▎§8§l§o▏ §aCloud-Steuerung"
+          "title": "§7§l§o▎§8§l§o▏ §aCloud-Control"
         }
       },
       "other": {
-        "tag-disabled": "%s hat seinen Team-Tag deaktiviert.",
-        "tag-enabled": "%s hat seinen Team-Tag aktiviert."
+        "tag-disabled": "%s disabled his Staff-Tag.",
+        "tag-enabled": "%s enabled his Staff-Tag."
       }
     },
-
     "interaction": {
-      "ban": "Spieler bannen",
-      "mute": "Spieler muten"
+      "ban": "Ban player",
+      "mute": "Mute player"
     },
-
     "popup": {
       "ban": {
-        "title": "Spieler bannen - %s",
+        "title": "Ban player - %s",
         "reason": {
-          "title": "Grund des Banns",
+          "title": "Reason of the ban",
           "type": {
             "hacking": "Hacking",
-            "umgehung": "Ban-Umgehung",
-            "abuse": "Report-Ausnutzung",
+            "umgehung": "Ban Evading",
+            "abuse": "Report Abuse",
             "bugusing": "Bugusing",
             "teaming": "Teaming",
             "ghosting": "Ghosting",
@@ -102,45 +98,44 @@
             "skin": "Skin/Name"
           }
         },
-        "proof": "Beweis"
+        "proof": "Proof"
       },
       "mute": {
-        "title": "Spieler muten - %s",
+        "title": "Mute player - %s",
         "reason": {
-          "title": "Grund des Mutes",
+          "title": "Reason of the mute",
           "type": {
-            "wortwahl": "Wortwahl",
-            "werbung": "Werbung",
-            "verhalten": "Verhalten",
+            "wortwahl": "Language",
+            "werbung": "Advertisement",
+            "verhalten": "Behaviour",
             "spamming": "Spamming",
-            "provokation": "Provokation",
+            "provokation": "Provocation",
             "capslock": "Capslock",
-            "other": "Sonstiges"
+            "other": "Other"
           }
         },
-        "proof": "Beweis"
+        "proof": "Proof"
       },
       "success": {
-        "title": "Aktion erfolgreich durchgeführt",
-        "ban": "Der Spieler %s wurde erfolgreich gebannt.",
-        "mute": "Der Spieler %s wurde erfolgreich gemutet."
+        "title": "Action performed successfully",
+        "ban": "The player %s has been banned successfully.",
+        "mute": "The player %s has been muted successfully."
       },
       "failed": {
-        "title": "Aktion nicht durchgeführt",
-        "empty": "Das Feld %s darf nicht leer sein."
+        "title": "Action not performed",
+        "empty": "The field %s cannot be empty."
       },
       "button": {
-        "send": "Absenden",
-        "abort": "Abbrechen"
+        "send": "Submit",
+        "abort": "Cancel"
       }
     },
-
     "hudWidget": {
       "terramc_restart_time": {
-        "name": "Neustart-Zeit"
+        "name": "Restart-Time"
       },
       "terramc_server_status": {
-        "name": "Server-Status",
+        "name": "Server status",
         "tps": "TPS",
         "cpu": "CPU",
         "ram": "RAM"
@@ -151,25 +146,24 @@
         "autoVanish": "Auto. Vanish"
       },
       "terramc_current_report": {
-        "name": "Aktueller Report",
-        "reported": "Gemeldeter Spieler",
-        "reporter": "Gemeldet von",
-        "reason": "Report-Grund",
-        "priority": "Priorität",
+        "name": "Current Report",
+        "reported": "Reported Player",
+        "reporter": "Reported By",
+        "reason": "Report-Reason",
+        "priority": "Priority",
         "id": "Report-ID",
-        "finish": "Abschließen?"
+        "finish": "Complete?"
       }
     },
-
     "ui": {
       "navigation": {
-        "main_ui": "TerraMC (Team)"
+        "main_ui": "TerraMC (Staff)"
       },
       "general": {
-        "noInfoAvailable": "Es können keine Informationen bereitgestellt werden.",
-        "connectToServer": "Bitte verbinde dich auf TerraMC.net",
-        "noAccess": "Du bist nicht berechtigt um diese Seite zu sehen.",
-        "connect": "Verbinden"
+        "noInfoAvailable": "No information can be provided.",
+        "connectToServer": "Please connect to TerraMC.net",
+        "noAccess": "You have no access to this site.",
+        "connect": "Connect"
       },
       "activity": {
         "serverInfo": "Server-Info",
@@ -177,23 +171,23 @@
         "cloud": "Cloud"
       },
       "cloud": {
-        "title": "Cloud-Steuerung",
+        "title": "Cloud Control",
         "button": {
-          "restart": "Neustart",
-          "maintenance": "Wartung"
+          "restart": "Restart",
+          "maintenance": "Maintenance"
         }
       },
       "reports": {
-        "title": "Aktuelle Reports",
-        "reported": "Gemeldeter Spieler",
-        "reporter": "Gemeldet von",
-        "reason": "Grund",
-        "priority": "Priorität",
+        "title": "Current Reports",
+        "reported": "Reported Player",
+        "reporter": "Reported By",
+        "reason": "Reason",
+        "priority": "Priority",
         "button": {
-          "accept": "Annehmen",
-          "delete": "Löschen"
+          "accept": "Accept",
+          "delete": "Delete"
         },
-        "accepted": "Report wurde bereits angenommen"
+        "accepted": "Report has already been accepted"
       }
     }
   }
