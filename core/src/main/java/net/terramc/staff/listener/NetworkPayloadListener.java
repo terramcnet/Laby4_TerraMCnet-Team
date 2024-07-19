@@ -5,8 +5,8 @@ import com.google.gson.JsonObject;
 import net.labymod.api.client.component.Component;
 import net.labymod.api.event.Subscribe;
 import net.labymod.api.event.client.network.server.NetworkPayloadEvent;
-import net.labymod.serverapi.protocol.payload.exception.PayloadReaderException;
-import net.labymod.serverapi.protocol.payload.io.PayloadReader;
+import net.labymod.serverapi.api.payload.exception.PayloadReaderException;
+import net.labymod.serverapi.api.payload.io.PayloadReader;
 import net.terramc.staff.TerraStaffAddon;
 import net.terramc.staff.data.AddonData;
 import net.terramc.staff.data.ReportData;
@@ -42,7 +42,7 @@ public class NetworkPayloadListener {
 
           if(object.has("playerRank")) {
             AddonData.setRank(object.get("playerRank").getAsString());
-            this.addon.terraMainActivity.updateStaffActivity();
+            //this.addon.terraMainActivity.updateStaffActivity();
           }
 
           // Staff
@@ -108,6 +108,44 @@ public class NetworkPayloadListener {
                 }
               });
             } catch (NumberFormatException ignored) {}
+          }
+
+          if(object.has("reportAddonAccepted")) {
+
+            String[] split = object.get("reportAddonAccepted").getAsString().split(";");
+            if(split.length != 2) return;
+            try {
+              int id = Integer.parseInt(split[0]);
+              String playerName = split[1];
+              AddonData.reports().forEach(reportData -> {
+                if(reportData.id() == id) {
+                  if(!reportData.accepted()) {
+                    reportData.accepted(true);
+
+                    this.addon.pushNotification(
+                        Component.text(TerraStaffAddon.doubleLine + "§4Report-System"),
+                        Component.text("§7Der Report mit der ID §e#" + id + " §8(§c" + reportData.reported() + "§8) §7wird nun von §a" + playerName + " §7bearbeitet.")
+                    );
+
+                  }
+                }
+              });
+            } catch (NumberFormatException ignored) {}
+
+            /*int id = object.get("reportAddonAccepted").getAsInt();
+            AddonData.reports().forEach(reportData -> {
+              if(reportData.id() == id) {
+                if(!reportData.accepted()) {
+                  reportData.accepted(true);
+
+                  this.addon.pushNotification(
+                      Component.text(TerraStaffAddon.doubleLine + "§4Report-System"),
+                      Component.text("§7Der Report mit der ID §e#" + id + " §8(§c" + reportData.reported() + "§8) §7wird nun von einem Teammitglied bearbeitet.")
+                  );
+
+                }
+              }
+            });*/
           }
 
           if(object.has("currentReportData")) {

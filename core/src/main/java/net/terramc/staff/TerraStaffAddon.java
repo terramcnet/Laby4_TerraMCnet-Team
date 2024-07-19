@@ -1,6 +1,7 @@
 package net.terramc.staff;
 
 import java.util.UUID;
+import java.util.concurrent.TimeUnit;
 import com.google.gson.Gson;
 import net.labymod.api.Laby;
 import net.labymod.api.addon.LabyAddon;
@@ -13,13 +14,15 @@ import net.labymod.api.notification.Notification;
 import net.labymod.api.notification.Notification.Type;
 import net.labymod.api.revision.SimpleRevision;
 import net.labymod.api.util.GsonUtil;
+import net.labymod.api.util.concurrent.task.Task;
 import net.labymod.api.util.version.SemanticVersion;
-import net.terramc.staff.activities.navigation.TerraMainActivity;
-import net.terramc.staff.activities.navigation.TerraNavigationElement;
+import net.terramc.staff.activities.navigation.TerraStaffNavigation;
 import net.terramc.staff.hudwidget.CurrentReportHudWidget;
 import net.terramc.staff.hudwidget.RestartTimeHudWidget;
 import net.terramc.staff.hudwidget.ServerStatusHudWidget;
 import net.terramc.staff.hudwidget.VanishHudWidget;
+import net.terramc.staff.interaction.BanBulletPoint;
+import net.terramc.staff.interaction.MuteBulletPoint;
 import net.terramc.staff.listener.ChatMessageListener;
 import net.terramc.staff.listener.NetworkListener;
 import net.terramc.staff.listener.NetworkPayloadListener;
@@ -33,7 +36,7 @@ public class TerraStaffAddon extends LabyAddon<TerraStaffConfiguration> {
 
   public final HudWidgetCategory widgetCategory = new HudWidgetCategory("terramc_staff");
 
-  public TerraMainActivity terraMainActivity;
+  //public TerraMainActivity terraMainActivity;
 
   private ApiUtil apiUtil;
   private RankUtil rankUtil;
@@ -61,7 +64,7 @@ public class TerraStaffAddon extends LabyAddon<TerraStaffConfiguration> {
     this.apiUtil.loadRankData(uuid);
     this.apiUtil.loadServerData(uuid);
 
-    this.terraMainActivity = new TerraMainActivity(this);
+    //this.terraMainActivity = new TerraMainActivity(this);
 
     this.rankUtil = new RankUtil();
     this.broadcastUtil = new BroadcastUtil(this);
@@ -69,10 +72,9 @@ public class TerraStaffAddon extends LabyAddon<TerraStaffConfiguration> {
     this.registerListener(new ChatMessageListener(this));
     this.registerListener(new NetworkListener(this));
     this.registerListener(new SessionListener(this));
-
     this.registerListener(new NetworkPayloadListener(this));
 
-    labyAPI().navigationService().register("terramc_staff_ui", new TerraNavigationElement(this));
+    //labyAPI().navigationService().register("terramc_staff_ui", new TerraNavigationElement(this));
 
     labyAPI().hudWidgetRegistry().categoryRegistry().register(widgetCategory);
     labyAPI().hudWidgetRegistry().register(new RestartTimeHudWidget(this));
@@ -80,7 +82,11 @@ public class TerraStaffAddon extends LabyAddon<TerraStaffConfiguration> {
     labyAPI().hudWidgetRegistry().register(new VanishHudWidget(this));
     labyAPI().hudWidgetRegistry().register(new CurrentReportHudWidget(this));
 
+    labyAPI().interactionMenuRegistry().register("terramc_staff_ban", new BanBulletPoint(this));
+    labyAPI().interactionMenuRegistry().register("terramc_staff_mute", new MuteBulletPoint(this));
+
     this.logger().info("[TerraMCnet Team] Addon enabled.");
+    Task.builder(() -> TerraStaffNavigation.register(this)).delay(10, TimeUnit.SECONDS).build().execute();
 
     configuration().cloudNotifyType().addChangeListener(cloudNotifyType -> {
       if(!rankUtil.canControlCloud()) {

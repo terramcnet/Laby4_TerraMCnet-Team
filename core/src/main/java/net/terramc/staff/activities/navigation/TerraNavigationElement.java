@@ -11,7 +11,7 @@ public class TerraNavigationElement extends ScreenNavigationElement {
   private TerraStaffAddon addon;
 
   public TerraNavigationElement(TerraStaffAddon addon) {
-    super(addon.terraMainActivity);
+    super(new TerraMainActivity(addon));
     this.addon = addon;
   }
 

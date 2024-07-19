@@ -19,7 +19,7 @@ public class TerraStaffConfiguration extends AddonConfig {
 
   @SettingSection(value = "general", center = true)
 
-  @SpriteSlot(x = 1)
+  @SpriteSlot(x = 0)
   @SwitchSetting
   private final ConfigProperty<Boolean> enabled = new ConfigProperty<>(true);
 
@@ -28,7 +28,7 @@ public class TerraStaffConfiguration extends AddonConfig {
   @SettingSection(value = "staff", center = true)
 
   @IntroducedIn(namespace = "terramc_staff", value = "1.0.0")
-  @SpriteSlot(x = 2)
+  @SpriteSlot(x = 1)
   @SwitchSetting
   private final ConfigProperty<Boolean> hideOwnTag = new ConfigProperty<>(false);
 
@@ -42,7 +42,7 @@ public class TerraStaffConfiguration extends AddonConfig {
   private final ConfigProperty<AddonData.CloudNotifyType> cloudNotifyType = new ConfigProperty<>(AddonData.CloudNotifyType.CHAT);
 
   @IntroducedIn(namespace = "terramc_staff", value = "1.0.0")
-  @SpriteSlot(x = 2)
+  @SpriteSlot(x = 1)
   @SwitchSetting
   private final ConfigProperty<Boolean> showTagAlways = new ConfigProperty<>(false);
 

@@ -7,8 +7,6 @@ plugins {
 group = "org.example"
 version = "1.0.0"
 
-java.toolchain.languageVersion.set(JavaLanguageVersion.of(17))
-
 tasks.withType<JavaCompile> {
     options.encoding = "UTF-8"
 }
@@ -44,7 +42,10 @@ labyMod {
                 "1.19.4",
                 "1.20.1",
                 "1.20.2",
-                "1.20.4"
+                "1.20.4",
+                "1.20.5",
+                "1.20.6",
+                "1.21"
         ) { version, provider ->
             configureRun(provider, version)
         }
@@ -69,6 +70,7 @@ subprojects {
     repositories {
         maven("https://libraries.minecraft.net/")
         maven("https://repo.spongepowered.org/repository/maven-public/")
+        maven("http://maven.terramc.net:8081/repository/terramc-releases/").isAllowInsecureProtocol=true;
     }
 }
 
@@ -85,7 +87,7 @@ fun configureRun(provider: net.labymod.gradle.core.minecraft.provider.VersionPro
         args("--addon-dev-environment", "true")
     }
 
-    provider.javaVersion = JavaVersion.VERSION_17
+    provider.javaVersion = JavaVersion.VERSION_21
 
     provider.mixin {
         val mixinMinVersion = when (gameVersion) {
