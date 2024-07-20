@@ -36,8 +36,6 @@ public class TerraStaffAddon extends LabyAddon<TerraStaffConfiguration> {
 
   public final HudWidgetCategory widgetCategory = new HudWidgetCategory("terramc_staff");
 
-  //public TerraMainActivity terraMainActivity;
-
   private ApiUtil apiUtil;
   private RankUtil rankUtil;
   private BroadcastUtil broadcastUtil;
@@ -64,8 +62,6 @@ public class TerraStaffAddon extends LabyAddon<TerraStaffConfiguration> {
     this.apiUtil.loadRankData(uuid);
     this.apiUtil.loadServerData(uuid);
 
-    //this.terraMainActivity = new TerraMainActivity(this);
-
     this.rankUtil = new RankUtil();
     this.broadcastUtil = new BroadcastUtil(this);
 
@@ -73,8 +69,6 @@ public class TerraStaffAddon extends LabyAddon<TerraStaffConfiguration> {
     this.registerListener(new NetworkListener(this));
     this.registerListener(new SessionListener(this));
     this.registerListener(new NetworkPayloadListener(this));
-
-    //labyAPI().navigationService().register("terramc_staff_ui", new TerraNavigationElement(this));
 
     labyAPI().hudWidgetRegistry().categoryRegistry().register(widgetCategory);
     labyAPI().hudWidgetRegistry().register(new RestartTimeHudWidget(this));

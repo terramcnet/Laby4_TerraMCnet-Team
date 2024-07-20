@@ -4,6 +4,7 @@ import java.util.UUID;
 import net.labymod.api.event.Subscribe;
 import net.labymod.api.event.client.session.SessionUpdateEvent;
 import net.terramc.staff.TerraStaffAddon;
+import net.terramc.staff.activities.navigation.TerraStaffNavigation;
 
 public class SessionListener {
 
@@ -19,6 +20,7 @@ public class SessionListener {
     this.addon.apiUtil().loadRankData(newUUID);
     this.addon.apiUtil().loadServerData(newUUID);
     this.addon.apiUtil().authKey = "NA";
+    TerraStaffNavigation.register(this.addon);
   }
 
 }
